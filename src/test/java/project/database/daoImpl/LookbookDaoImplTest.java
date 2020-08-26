@@ -8,17 +8,21 @@ class LookbookDaoImplTest {
 
     @Test
     void save() {
+        fail();
     }
 
     @Test
     void findById() {
+        fail();
     }
 
     @Test
     void findAll() {
+        fail();
     }
 
     @Test
     void delete() {
+        fail();
     }
 }
