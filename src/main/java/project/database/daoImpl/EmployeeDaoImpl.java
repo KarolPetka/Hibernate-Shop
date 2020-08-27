@@ -50,7 +50,21 @@ public class EmployeeDaoImpl implements EmployeeDao {
     }
 
     public List<Employee> findAll() {
-        return null;
+        Session session = HibernateUtils
+                .instance()
+                .getSessionFactory()
+                .getCurrentSession();
+
+        session.beginTransaction();
+
+        List<Employee> list = session
+                .createQuery("from Employee")
+                .getResultList();
+
+        session.getTransaction().commit();
+        session.close();
+
+        return list;
     }
 
     public void delete(Long id) {

@@ -7,6 +7,8 @@ import project.database.dao.EmployeeDao;
 import project.database.entity.Employee;
 import project.database.utils.HibernateUtils;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class EmployeeDaoImplTest {
@@ -14,7 +16,7 @@ class EmployeeDaoImplTest {
     private EmployeeDao employeeDao = new EmployeeDaoImpl();
 
     @BeforeEach
-    void setUp(){
+    void setUp() {
         try {
             Session session = HibernateUtils
                     .instance()
@@ -29,7 +31,7 @@ class EmployeeDaoImplTest {
             session.getTransaction().commit();
             session.close();
 
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             fail(e);
         }
@@ -49,7 +51,7 @@ class EmployeeDaoImplTest {
             assertEquals(employee.getEmployeeId(), loadedEmployee.getEmployeeId());
             assertEquals(employee.getName(), loadedEmployee.getName());
 
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             fail(e);
         }
@@ -57,7 +59,45 @@ class EmployeeDaoImplTest {
 
     @Test
     void findAll() {
-        fail();
+        try {
+            Employee employee1 = new Employee();
+            Employee employee2 = new Employee();
+
+            employee1.setName("John Smith");
+            employee2.setName("John Wick");
+
+            employeeDao.save(employee1);
+            employeeDao.save(employee2);
+
+            List<Employee> list = employeeDao.findAll();
+
+            assertNotNull(list);
+            assertEquals(2, list.size());
+
+            Employee test1 = null;
+            Employee test2 = null;
+
+            for (Employee employee : list) {
+                if (employee.getEmployeeId().equals(employee1.getEmployeeId())) {
+                    test1 = employee;
+                } else if (employee.getEmployeeId().equals(employee2.getEmployeeId())) {
+                    test2 = employee;
+                }
+            }
+
+            assertNotNull(test1);
+            assertNotNull(test2);
+
+            assertEquals(employee1.getEmployeeId(), test1.getEmployeeId());
+            assertEquals(employee1.getName(), employee1.getName());
+
+            assertEquals(employee2.getEmployeeId(), test2.getEmployeeId());
+            assertEquals(employee2.getName(), employee2.getName());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            fail(e);
+        }
     }
 
     @Test
