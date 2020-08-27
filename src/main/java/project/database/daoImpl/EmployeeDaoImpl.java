@@ -68,6 +68,18 @@ public class EmployeeDaoImpl implements EmployeeDao {
     }
 
     public void delete(Long id) {
+        Session session = HibernateUtils
+                .instance()
+                .getSessionFactory()
+                .getCurrentSession();
 
+        session.beginTransaction();
+
+        session.createQuery("delete Employee where id=:id")
+                .setParameter("id", id)
+                .executeUpdate();
+
+        session.getTransaction().commit();
+        session.close();
     }
 }

@@ -102,6 +102,19 @@ class EmployeeDaoImplTest {
 
     @Test
     void delete() {
-        fail();
+        try {
+            Employee employee = new Employee();
+            employee.setName("John Smith");
+
+            employeeDao.save(employee);
+            employeeDao.delete(employee.getEmployeeId());
+
+            Employee deletedEmployee = employeeDao.findById(employee.getEmployeeId());
+
+            assertNull(deletedEmployee);
+        } catch (Exception e){
+            e.printStackTrace();
+            fail(e);
+        }
     }
 }
