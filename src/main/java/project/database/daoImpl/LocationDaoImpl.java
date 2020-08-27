@@ -49,7 +49,21 @@ public class LocationDaoImpl implements LocationDao {
     }
 
     public List<Location> findAll() {
-        return null;
+        Session session = HibernateUtils
+                .instance()
+                .getSessionFactory()
+                .getCurrentSession();
+
+        session.beginTransaction();
+
+        List<Location> list = session
+                .createQuery("from Location")
+                .getResultList();
+
+        session.getTransaction().commit();
+        session.close();
+
+        return list;
     }
 
     public void delete(Long id) {

@@ -9,6 +9,8 @@ import project.database.entity.Employee;
 import project.database.entity.Location;
 import project.database.utils.HibernateUtils;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class LocationDaoImplTest {
@@ -25,7 +27,7 @@ class LocationDaoImplTest {
 
             session.beginTransaction();
 
-            session.createQuery("delete Employee")
+            session.createQuery("delete Location")
                     .executeUpdate();
 
             session.getTransaction().commit();
@@ -53,13 +55,48 @@ class LocationDaoImplTest {
     }
 
     @Test
-    void findById() {
-        fail();
-    }
-
-    @Test
     void findAll() {
-        fail();
+        try {
+            Location location1 = new Location();
+            Location location2 = new Location();
+
+            location1.setCountry("USA");
+            location1.setCity("Los Angeles");
+
+            location2.setCountry("Japan");
+            location2.setCity("Kyoto");
+
+            locationDao.save(location1);
+            locationDao.save(location2);
+
+            Location test1 = null;
+            Location test2 = null;
+
+            List<Location> list = locationDao.findAll();
+
+            assertNotNull(list);
+            assertEquals(2, list.size());
+
+            for (Location location : list) {
+                if (location.getLocationId().equals(location1.getLocationId())) {
+                    test1 = location;
+                } else if (location.getLocationId().equals(location2.getLocationId())) {
+                    test2 = location;
+                }
+            }
+
+
+            assertEquals(location1.getLocationId(), test1.getLocationId());
+            assertEquals(location1.getCountry(), test1.getCountry());
+            assertEquals(location1.getCity(), test1.getCity());
+
+            assertEquals(location2.getLocationId(), test2.getLocationId());
+            assertEquals(location2.getCountry(), test2.getCountry());
+            assertEquals(location2.getCity(), test2.getCity());
+        } catch (Exception e){
+            e.printStackTrace();
+            fail(e);
+        }
     }
 
     @Test
