@@ -15,7 +15,6 @@ public class Lookbook {
     private Integer priceInUSD;
     private Integer quantity;
     private String season;
-    private String status;
 
     public Lookbook() {
     }
@@ -58,13 +57,5 @@ public class Lookbook {
 
     public void setSeason(String season) {
         this.season = season;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
     }
 }

@@ -47,7 +47,21 @@ public class LookbookDaoImpl implements LookbookDao {
     }
 
     public List<Lookbook> findAll() {
-        return null;
+        Session session = HibernateUtils
+                .instance()
+                .getSessionFactory()
+                .getCurrentSession();
+
+        session.beginTransaction();
+
+        List<Lookbook> list = session
+                .createQuery("from Lookbook")
+                .getResultList();
+
+        session.getTransaction().commit();
+        session.close();
+
+        return list;
     }
 
     public void delete(Long id) {
