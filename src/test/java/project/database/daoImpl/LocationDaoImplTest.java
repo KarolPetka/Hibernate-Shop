@@ -46,6 +46,13 @@ class LocationDaoImplTest {
 
             locationDao.save(location);
 
+            Location loadedLocation = locationDao.findById(location.getLocationId());
+
+            assertNotNull(loadedLocation);
+            assertEquals(location.getLocationId(), loadedLocation.getLocationId());
+            assertEquals(location.getCountry(), loadedLocation.getCountry());
+            assertEquals(location.getCity(), loadedLocation.getCity());
+
         } catch (Exception e) {
             e.printStackTrace();
             fail(e);
@@ -91,7 +98,7 @@ class LocationDaoImplTest {
             assertEquals(location2.getLocationId(), test2.getLocationId());
             assertEquals(location2.getCountry(), test2.getCountry());
             assertEquals(location2.getCity(), test2.getCity());
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             fail(e);
         }
@@ -110,7 +117,7 @@ class LocationDaoImplTest {
             Location deletedLocation = locationDao.findById(location.getLocationId());
 
             assertNull(deletedLocation);
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             fail(e);
         }
