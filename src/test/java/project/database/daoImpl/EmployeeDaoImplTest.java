@@ -112,7 +112,7 @@ class EmployeeDaoImplTest {
             Employee deletedEmployee = employeeDao.findById(employee.getEmployeeId());
 
             assertNull(deletedEmployee);
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             fail(e);
         }

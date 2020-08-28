@@ -111,31 +111,31 @@ class LookbookDaoImplTest {
             assertEquals(lookbook2.getSeason(), test2.getSeason());
             assertEquals(lookbook2.getQuantity(), test2.getQuantity());
 
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             fail(e);
         }
     }
 
-        @Test
-        void delete () {
-            try {
-                Lookbook lookbook = new Lookbook();
-                lookbook.setName("Gucci shirt");
-                lookbook.setPriceInUSD(150);
-                lookbook.setSeason("spring/summer 2020");
-                lookbook.setQuantity(20);
+    @Test
+    void delete() {
+        try {
+            Lookbook lookbook = new Lookbook();
+            lookbook.setName("Gucci shirt");
+            lookbook.setPriceInUSD(150);
+            lookbook.setSeason("spring/summer 2020");
+            lookbook.setQuantity(20);
 
-                lookbookDao.save(lookbook);
-                lookbookDao.delete(lookbook.getProductId());
+            lookbookDao.save(lookbook);
+            lookbookDao.delete(lookbook.getProductId());
 
-                Lookbook deletedProduct = lookbookDao.findById(lookbook.getProductId());
+            Lookbook deletedProduct = lookbookDao.findById(lookbook.getProductId());
 
-                assertNull(deletedProduct);
+            assertNull(deletedProduct);
 
-            } catch (Exception e){
-                e.printStackTrace();
-                fail(e);
-            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            fail(e);
         }
     }
+}
