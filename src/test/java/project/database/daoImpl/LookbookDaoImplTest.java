@@ -119,6 +119,23 @@ class LookbookDaoImplTest {
 
         @Test
         void delete () {
-            fail();
+            try {
+                Lookbook lookbook = new Lookbook();
+                lookbook.setName("Gucci shirt");
+                lookbook.setPriceInUSD(150);
+                lookbook.setSeason("spring/summer 2020");
+                lookbook.setQuantity(20);
+
+                lookbookDao.save(lookbook);
+                lookbookDao.delete(lookbook.getProductId());
+
+                Lookbook deletedProduct = lookbookDao.findById(lookbook.getProductId());
+
+                assertNull(deletedProduct);
+
+            } catch (Exception e){
+                e.printStackTrace();
+                fail(e);
+            }
         }
     }

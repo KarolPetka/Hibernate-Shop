@@ -37,7 +37,7 @@ public class LookbookDaoImpl implements LookbookDao {
                     .setParameter("id", id)
                     .getSingleResult();
 
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -65,6 +65,18 @@ public class LookbookDaoImpl implements LookbookDao {
     }
 
     public void delete(Long id) {
+        Session session = HibernateUtils
+                .instance()
+                .getSessionFactory()
+                .getCurrentSession();
 
+        session.beginTransaction();
+
+        session.createQuery("delete Lookbook where id=:id")
+                .setParameter("id", id)
+                .executeUpdate();
+
+        session.getTransaction().commit();
+        session.close();
     }
 }
