@@ -3,9 +3,7 @@ package project.database.daoImpl;
 import org.hibernate.Session;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import project.database.dao.EmployeeDao;
 import project.database.dao.LocationDao;
-import project.database.entity.Employee;
 import project.database.entity.Location;
 import project.database.utils.HibernateUtils;
 
@@ -101,6 +99,20 @@ class LocationDaoImplTest {
 
     @Test
     void delete() {
-        fail();
+        try {
+            Location location = new Location();
+            location.setCountry("USA");
+            location.setCity("Los Angeles");
+
+            locationDao.save(location);
+            locationDao.delete(location.getLocationId());
+
+            Location deletedLocation = locationDao.findById(location.getLocationId());
+
+            assertNull(deletedLocation);
+        } catch (Exception e){
+            e.printStackTrace();
+            fail(e);
+        }
     }
 }

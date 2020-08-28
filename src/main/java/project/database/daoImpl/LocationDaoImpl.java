@@ -67,6 +67,18 @@ public class LocationDaoImpl implements LocationDao {
     }
 
     public void delete(Long id) {
+        Session session = HibernateUtils
+                .instance()
+                .getSessionFactory()
+                .getCurrentSession();
 
+        session.beginTransaction();
+
+        session.createQuery("delete Location where id=:id")
+                .setParameter("id", id)
+                .executeUpdate();
+
+        session.getTransaction().commit();
+        session.close();
     }
 }
