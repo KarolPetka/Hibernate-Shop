@@ -58,4 +58,12 @@ public class Lookbook {
     public void setSeason(String season) {
         this.season = season;
     }
+
+
+    public String toStringClient() {
+        return "ID= " + productId +
+                " | NAME= " + name +
+                " | PRICE= " + priceInUSD +
+                " | SEASON= " + season;
+    }
 }

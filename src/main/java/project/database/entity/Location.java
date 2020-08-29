@@ -38,4 +38,12 @@ public class Location {
     public void setCity(String city) {
         this.city = city;
     }
+
+    public String toString() {
+        return "Location{" +
+                "locationId=" + locationId +
+                ", country='" + country + '\'' +
+                ", city='" + city + '\'' +
+                '}';
+    }
 }
