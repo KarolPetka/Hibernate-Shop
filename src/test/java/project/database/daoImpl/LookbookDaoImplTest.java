@@ -44,7 +44,6 @@ class LookbookDaoImplTest {
             lookbook.setName("Gucci shirt");
             lookbook.setPriceInUSD(150);
             lookbook.setSeason("spring/summer 2020");
-            lookbook.setQuantity(20);
 
             lookbookDao.save(lookbook);
 
@@ -55,7 +54,6 @@ class LookbookDaoImplTest {
             assertEquals(lookbook.getName(), loadedLookbook.getName());
             assertEquals(lookbook.getPriceInUSD(), loadedLookbook.getPriceInUSD());
             assertEquals(lookbook.getSeason(), loadedLookbook.getSeason());
-            assertEquals(lookbook.getQuantity(), loadedLookbook.getQuantity());
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -72,12 +70,10 @@ class LookbookDaoImplTest {
             lookbook1.setName("Gucci shirt");
             lookbook1.setPriceInUSD(150);
             lookbook1.setSeason("spring/summer 2020");
-            lookbook1.setQuantity(20);
 
             lookbook2.setName("Amiri shirt");
             lookbook2.setPriceInUSD(200);
             lookbook2.setSeason("spring/summer 2020");
-            lookbook2.setQuantity(5);
 
             lookbookDao.save(lookbook1);
             lookbookDao.save(lookbook2);
@@ -102,14 +98,12 @@ class LookbookDaoImplTest {
             assertEquals(lookbook1.getName(), test1.getName());
             assertEquals(lookbook1.getPriceInUSD(), test1.getPriceInUSD());
             assertEquals(lookbook1.getSeason(), test1.getSeason());
-            assertEquals(lookbook1.getQuantity(), test1.getQuantity());
 
             assertNotNull(test2);
             assertEquals(lookbook2.getProductId(), test2.getProductId());
             assertEquals(lookbook2.getName(), test2.getName());
             assertEquals(lookbook2.getPriceInUSD(), test2.getPriceInUSD());
             assertEquals(lookbook2.getSeason(), test2.getSeason());
-            assertEquals(lookbook2.getQuantity(), test2.getQuantity());
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -124,7 +118,6 @@ class LookbookDaoImplTest {
             lookbook.setName("Gucci shirt");
             lookbook.setPriceInUSD(150);
             lookbook.setSeason("spring/summer 2020");
-            lookbook.setQuantity(20);
 
             lookbookDao.save(lookbook);
             lookbookDao.delete(lookbook.getProductId());

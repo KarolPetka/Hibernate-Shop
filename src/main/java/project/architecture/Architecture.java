@@ -49,26 +49,28 @@ public class Architecture {
         while (isTrue) {
             System.out.println("1 - Shopping\n" +
                     "2 - Basket\n" +
-                    "3 - Go Back");
+                    "0 - Go Back");
 
             choice = scanner.nextLine();
 
             if (choice.equals("1")) {
                 for (Lookbook lookbook : lookbookDao.findAll()) {
                     System.out.println(lookbook.toStringClient());
-                    System.out.println("\nSelect ID and QUANTITY to add to BASKET");
+
                     while (isTrue) {
+                        System.out.println("\nSelect ID to add to BASKET (0 to quit)");
                         System.out.print("ID= ");
-                        int id = scanner.nextInt();
-                        basket.addToBasket(id);
-                        isTrue = false;
+                        Long id = scanner.nextLong();
+
+                        if (id == 0){
+                            clientMenu();
+                        } else basket.addToBasket(id);
                     }
                 }
             } else if (choice.equals("2")) {
                 isTrue = false;
                 basket.showBasket();
-            } else if (choice.equals("3")) {
-                isTrue = false;
+            } else if (choice.equals("0")) {
                 mainMenu();
             } else System.out.println("Incorrect choice, try again");
         }
@@ -87,7 +89,7 @@ public class Architecture {
                 "10 - Search for products by ID\n" +
                 "11 - Add product/update product\n" +
                 "12 - Delete product\n" +
-                "13 - Go Back");
+                "0 - Go Back");
 
     }
 }
