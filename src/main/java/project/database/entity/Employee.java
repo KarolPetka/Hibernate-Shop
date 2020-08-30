@@ -2,8 +2,6 @@ package project.database.entity;
 
 import javax.persistence.*;
 
-// TODO: - make mapping relation for employee workplace id "workLocationId"
-
 @Entity
 @Table(name = "Employee")
 public class Employee {

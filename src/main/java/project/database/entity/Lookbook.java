@@ -2,8 +2,6 @@ package project.database.entity;
 
 import javax.persistence.*;
 
-// TODO: - make mapping relation for product location id "productLocationId"
-
 @Entity
 @Table(name = "Lookbook")
 public class Lookbook {

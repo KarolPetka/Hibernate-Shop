@@ -58,18 +58,27 @@ public class Architecture {
                     System.out.println(lookbook.toStringClient());
 
                     while (isTrue) {
-                        System.out.println("\nSelect ID to add to BASKET (0 to quit)");
-                        System.out.print("ID= ");
-                        Long id = scanner.nextLong();
+                        System.out.print("\nSelect ID to add to BASKET (0 to quit)\n" +
+                                "ID= ");
+                        choice = scanner.nextLine();
 
-                        if (id == 0){
+                        if (choice.equals("0")) {
                             clientMenu();
-                        } else basket.addToBasket(id);
+                        } else basket.addToBasket(choice);
                     }
                 }
+
             } else if (choice.equals("2")) {
-                isTrue = false;
                 basket.showBasket();
+
+                while (isTrue) {
+                    System.out.println("\n0 - Go Back");
+                    choice = scanner.nextLine();
+
+                    if (choice.equals("0")) {
+                        clientMenu();
+                    } else System.out.println("Incorrect choice, try again");
+                }
             } else if (choice.equals("0")) {
                 mainMenu();
             } else System.out.println("Incorrect choice, try again");
