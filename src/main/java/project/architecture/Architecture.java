@@ -22,7 +22,7 @@ public class Architecture {
     static String choice;
     static boolean isTrue = true;
 
-    public void MainMenu() {
+    public void mainMenu() {
         System.out.println("+=========================+\n"
                 + "|*************************|\n"
                 + "|* Welcome to \"The Shop\" *|\n"
@@ -36,16 +36,16 @@ public class Architecture {
 
             choice = scanner.nextLine();
             if (choice.equals("1")) {
-                ClientMenu();
+                clientMenu();
                 isTrue = false;
             } else if (choice.equals("2")) {
-                ManagerMenu();
+                managerMenu();
                 isTrue = false;
             } else System.out.println("Incorrect choice, try again");
         }
     }
 
-    void ClientMenu() {
+    void clientMenu() {
         while (isTrue) {
             System.out.println("1 - Shopping\n" +
                     "2 - Basket\n" +
@@ -71,12 +71,12 @@ public class Architecture {
                 basket.showBasket();
             } else if (choice.equals("3")) {
                 isTrue = false;
-                MainMenu();
+                mainMenu();
             } else System.out.println("Incorrect choice, try again");
         }
     }
 
-    void ManagerMenu() {
+    void managerMenu() {
         System.out.println("1 - Show employee list\n" +
                 "2 - Search for employee by ID\n" +
                 "3 - Add employee/update employee\n" +
