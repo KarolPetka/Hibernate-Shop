@@ -16,6 +16,8 @@ public class Architecture {
     LocationDao locationDao = new LocationDaoImpl();
     LookbookDao lookbookDao = new LookbookDaoImpl();
 
+    Basket basket = new Basket();
+
     Scanner scanner = new Scanner(System.in);
     static String choice;
     static boolean isTrue = true;
@@ -54,14 +56,22 @@ public class Architecture {
             if (choice.equals("1")) {
                 for (Lookbook lookbook : lookbookDao.findAll()) {
                     System.out.println(lookbook.toStringClient());
-                    isTrue = false;
+                    System.out.println("\nSelect ID and QUANTITY to add to BASKET");
+                    while (isTrue) {
+                        System.out.print("ID= ");
+                        int id = scanner.nextInt();
+                        System.out.print("QUANTITY= ");
+                        int quantity = scanner.nextInt();
+                        basket.addToBasket(id, quantity);
+                        isTrue = false;
+                    }
                 }
-            } else if (choice.equals("2")){
-                // TODO: - implement basket
+            } else if (choice.equals("2")) {
                 isTrue = false;
-            } else if (choice.equals("3")){
+                basket.showBasket();
+            } else if (choice.equals("3")) {
+                isTrue = false;
                 MainMenu();
-                isTrue = false;
             } else System.out.println("Incorrect choice, try again");
         }
     }
