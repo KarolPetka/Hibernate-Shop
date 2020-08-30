@@ -13,7 +13,6 @@ public class Lookbook {
     private Long productId;
     private String name;
     private Integer priceInUSD;
-    private Integer quantity;
     private String season;
 
     public Lookbook() {
@@ -41,14 +40,6 @@ public class Lookbook {
 
     public void setPriceInUSD(Integer priceInUSD) {
         this.priceInUSD = priceInUSD;
-    }
-
-    public Integer getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
     }
 
     public String getSeason() {

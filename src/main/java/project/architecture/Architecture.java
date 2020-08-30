@@ -60,9 +60,7 @@ public class Architecture {
                     while (isTrue) {
                         System.out.print("ID= ");
                         int id = scanner.nextInt();
-                        System.out.print("QUANTITY= ");
-                        int quantity = scanner.nextInt();
-                        basket.addToBasket(id, quantity);
+                        basket.addToBasket(id);
                         isTrue = false;
                     }
                 }
