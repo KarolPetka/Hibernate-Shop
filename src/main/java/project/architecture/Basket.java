@@ -6,8 +6,11 @@ import project.database.utils.HibernateUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Basket {
+
+    Scanner scanner = new Scanner(System.in);
 
     List<Lookbook> basket = new ArrayList<>();
 
@@ -39,6 +42,6 @@ public class Basket {
         session.getTransaction().commit();
         session.close();
 
-        System.out.println("Product added to basket!");
+        System.out.println("\nProduct added to basket!");
     }
 }

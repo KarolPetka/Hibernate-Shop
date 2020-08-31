@@ -59,24 +59,30 @@ public class Architecture {
                 for (Lookbook lookbook : lookbookDao.findAll()) {
                     System.out.println(lookbook.toString());
                 }
-                    while (isTrue) {
-                        System.out.print("\nSelect ID to add to BASKET (0 to quit)\n" +
-                                "ID= ");
-                        choice = scanner.nextLine();
+                while (isTrue) {
+                    System.out.print("\nSelect ID to add to BASKET (0 to quit)\n" +
+                            "ID= ");
+                    choice = scanner.nextLine();
 
-                        if (choice.equals("0")) {
-                            clientMenu();
-                        } else basket.addToBasket(choice);
-                    }
+                    if (choice.equals("0")) {
+                        clientMenu();
+                    } else basket.addToBasket(choice);
+                }
 
             } else if (choice.equals("2")) {
                 basket.showBasket();
 
                 while (isTrue) {
-                    System.out.println("\n0 - Go Back");
+                    System.out.println("\n1 - Confirm purchase\n" +
+                            "0 - Go Back");
                     choice = scanner.nextLine();
 
-                    if (choice.equals("0")) {
+                    if (choice.equals("1")) {
+                        System.out.println("Thank You for purchase!");
+                        basket.basket.clear();
+
+                        mainMenu();
+                    } else if (choice.equals("0")) {
                         clientMenu();
                     } else System.out.println("Incorrect choice, try again");
                 }
@@ -107,14 +113,14 @@ public class Architecture {
                 for (Employee employee : employeeDao.findAll()) {
                     System.out.println(employee.toString());
                 }
-                    while (isTrue) {
-                        System.out.println("\n0 - Go Back");
-                        choice = scanner.nextLine();
+                while (isTrue) {
+                    System.out.println("\n0 - Go Back");
+                    choice = scanner.nextLine();
 
-                        if (choice.equals("0")) {
-                            managerMenu();
-                        } else System.out.println("Incorrect choice, try again");
-                    }
+                    if (choice.equals("0")) {
+                        managerMenu();
+                    } else System.out.println("Incorrect choice, try again");
+                }
 
             } else if (choice.equals("2")) {
                 System.out.print("Provide employee ID to search\n" +
@@ -266,7 +272,7 @@ public class Architecture {
                 System.out.println("\nProduct removed!\n");
                 managerMenu();
 
-            } else if (choice.equals("0")){
+            } else if (choice.equals("0")) {
                 mainMenu();
 
             } else System.out.println("Incorrect choice, try again");
