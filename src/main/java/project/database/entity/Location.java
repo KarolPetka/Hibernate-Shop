@@ -40,10 +40,8 @@ public class Location {
     }
 
     public String toString() {
-        return "Location{" +
-                "locationId=" + locationId +
-                ", country='" + country + '\'' +
-                ", city='" + city + '\'' +
-                '}';
+        return "ID= " + locationId +
+                " | city='" + city +
+                " | country='" + country;
     }
 }

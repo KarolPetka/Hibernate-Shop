@@ -31,9 +31,7 @@ public class Employee {
     }
 
     public String toString() {
-        return "Employee{" +
-                "employeeId=" + employeeId +
-                ", name='" + name + '\'' +
-                '}';
+        return "ID= " + employeeId +
+                " | NAME= " + name;
     }
 }

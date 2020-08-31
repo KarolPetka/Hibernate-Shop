@@ -49,7 +49,7 @@ public class Lookbook {
     }
 
 
-    public String toStringClient() {
+    public String toString() {
         return "ID= " + productId +
                 " | NAME= " + name +
                 " | PRICE= " + priceInUSD +

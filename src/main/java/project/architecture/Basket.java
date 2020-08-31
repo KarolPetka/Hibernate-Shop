@@ -12,12 +12,12 @@ public class Basket {
     List<Lookbook> basket = new ArrayList<>();
 
     void showBasket() {
-        if (basket.size() == 0){
+        if (basket.size() == 0) {
             System.out.println("\nBasket is empty...");
         } else {
             System.out.println("Basket:");
             for (Lookbook lookbook : basket) {
-                System.out.println(lookbook.toStringClient());
+                System.out.println(lookbook.toString());
             }
         }
     }
