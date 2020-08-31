@@ -41,7 +41,7 @@ public class Location {
 
     public String toString() {
         return "ID= " + locationId +
-                " | city='" + city +
-                " | country='" + country;
+                " | CITY='" + city +
+                " | COUNTRY='" + country;
     }
 }

@@ -58,7 +58,7 @@ public class Architecture {
             if (choice.equals("1")) {
                 for (Lookbook lookbook : lookbookDao.findAll()) {
                     System.out.println(lookbook.toString());
-
+                }
                     while (isTrue) {
                         System.out.print("\nSelect ID to add to BASKET (0 to quit)\n" +
                                 "ID= ");
@@ -68,7 +68,6 @@ public class Architecture {
                             clientMenu();
                         } else basket.addToBasket(choice);
                     }
-                }
 
             } else if (choice.equals("2")) {
                 basket.showBasket();
@@ -87,28 +86,27 @@ public class Architecture {
         }
     }
 
-     void managerMenu() {
+    void managerMenu() {
         System.out.println("1 - Show employee list\n" +
                 "2 - Search for employee by ID\n" +
-                "3 - Add employee/update employee\n" +
+                "3 - Add employee\n" +
                 "4 - Delete employee\n" +
                 "5 - Show location list\n" +
                 "6 - Search for location by ID\n" +
-                "7 - Add location/update location\n" +
+                "7 - Add location\n" +
                 "8 - Delete location\n" +
                 "9 - Show lookbook list\n" +
                 "10 - Search for products by ID\n" +
-                "11 - Add product/update product\n" +
+                "11 - Add product\n" +
                 "12 - Delete product\n" +
                 "0 - Go Back");
 
-        choice = scanner.nextLine();
-
         while (true) {
+            choice = scanner.nextLine();
             if (choice.equals("1")) {
                 for (Employee employee : employeeDao.findAll()) {
                     System.out.println(employee.toString());
-
+                }
                     while (isTrue) {
                         System.out.println("\n0 - Go Back");
                         choice = scanner.nextLine();
@@ -117,7 +115,6 @@ public class Architecture {
                             managerMenu();
                         } else System.out.println("Incorrect choice, try again");
                     }
-                }
 
             } else if (choice.equals("2")) {
                 System.out.print("Provide employee ID to search\n" +
@@ -224,7 +221,7 @@ public class Architecture {
                     } else System.out.println("Incorrect choice, try again");
                 }
 
-            } else if (choice.equals("10")){
+            } else if (choice.equals("10")) {
                 System.out.print("Provide product ID to search\n" +
                         "ID= ");
 
@@ -241,7 +238,7 @@ public class Architecture {
                     } else System.out.println("Incorrect choice, try again");
                 }
 
-            } else if (choice.equals("11")){
+            } else if (choice.equals("11")) {
                 Lookbook lookbook = new Lookbook();
                 System.out.print("Provide Product Name= ");
                 choice = scanner.nextLine();
@@ -260,7 +257,7 @@ public class Architecture {
                 System.out.println("\nProduct added!\n");
                 managerMenu();
 
-            } else if (choice.equals("12")){
+            } else if (choice.equals("12")) {
                 System.out.print("Provide ID to remove= ");
                 choice = scanner.nextLine();
 
@@ -268,6 +265,9 @@ public class Architecture {
 
                 System.out.println("\nProduct removed!\n");
                 managerMenu();
+
+            } else if (choice.equals("0")){
+                mainMenu();
 
             } else System.out.println("Incorrect choice, try again");
         }
